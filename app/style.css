@@ -1,0 +1,68 @@
+@font-face {
+  font-family: "Poster Black";
+  src: url("./fonts/NotoSans-CondensedBlack.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poster Bold";
+  src: url("./fonts/NotoSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+html, body { margin: 0; min-height: 100%; background: #141a3d; color: #f4eef7; font: 15px/1.45 "Poster Bold", system-ui, sans-serif; }
+body { display: flex; flex-direction: column; }
+
+.app { display: flex; gap: 28px; align-items: flex-start; justify-content: center; padding: 22px; box-sizing: border-box; flex: 1; }
+
+.controls { display: flex; flex-direction: column; gap: 14px; width: 320px; flex: none; }
+.controls h1 { margin: 0; font-family: "Poster Black", system-ui, sans-serif; font-size: 34px; letter-spacing: 0.5px; color: #ffb347; text-transform: uppercase; }
+.tagline { margin: 0; color: #cfc6e8; font-family: system-ui, sans-serif; }
+
+fieldset { border: 1px solid #3a4270; border-radius: 10px; padding: 12px; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+legend { font-family: "Poster Black", system-ui, sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 13px; color: #ff7ab8; padding: 0 6px; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 13px; }
+label.check { flex-direction: row; align-items: center; font-family: system-ui, sans-serif; font-weight: 400; }
+label.slider { font-family: system-ui, sans-serif; font-weight: 400; }
+input[type=text] { font: inherit; padding: 9px; border: 1px solid #4a5280; border-radius: 6px; background: #1d2350; color: #fff; }
+input[type=range] { width: 100%; accent-color: #ff5da2; }
+input[type=file] { display: none; }
+
+.slot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.slot-name { width: 92px; font-size: 13px; }
+.file-btn, .sample-btn { font: inherit; font-weight: 700; font-size: 13px; padding: 7px 10px; border: 0; border-radius: 6px; background: #ff5da2; color: #fff; cursor: pointer; }
+.sample-btn { background: #2c3468; color: #dfe3ff; }
+.file-btn:hover, .sample-btn:hover { filter: brightness(1.15); }
+.slot.active .slot-name { color: #ffb347; }
+
+.seg { display: flex; gap: 6px; flex-wrap: wrap; }
+.seg button { font: inherit; font-size: 13px; font-weight: 700; padding: 8px 10px; border: 1px solid #4a5280; border-radius: 6px; background: #1d2350; color: #dfe3ff; cursor: pointer; }
+.seg button.on { background: #ff5da2; border-color: #ff5da2; color: #fff; }
+.hint { margin: 0; font-family: system-ui, sans-serif; font-size: 12px; color: #9a93c2; }
+
+.export-btn { font: inherit; font-family: "Poster Black", system-ui, sans-serif; font-size: 19px; text-transform: uppercase; letter-spacing: 1px; padding: 13px; border: 0; border-radius: 8px; background: linear-gradient(90deg, #ff5da2, #ff7a18); color: #fff; cursor: pointer; }
+.export-btn:hover { filter: brightness(1.1); }
+#status { margin: 0; font-family: system-ui, sans-serif; font-size: 13px; color: #9a93c2; min-height: 1.2em; }
+
+.stage { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+#poster { width: min(62vh, 52vw); height: auto; box-shadow: 0 12px 44px rgba(0, 0, 0, 0.55); cursor: grab; background: #101736; }
+#poster:active { cursor: grabbing; }
+.stage-hint { margin: 0; font-family: system-ui, sans-serif; font-size: 13px; color: #9a93c2; }
+
+.fineprint { padding: 12px 22px 18px; text-align: center; font-family: system-ui, sans-serif; font-size: 12px; color: #6f6898; }
+
+/* Screenshot mode: the poster alone, edge to edge. */
+body.shot-cover .controls, body.shot-cover .fineprint, body.shot-cover .stage-hint { display: none; }
+body.shot-cover .app { padding: 0; }
+body.shot-cover .stage { width: 100%; }
+body.shot-cover #poster { width: 100vw; height: 100vh; object-fit: fill; box-shadow: none; }
+
+@media (max-width: 900px) {
+  .app { flex-direction: column; align-items: center; }
+  .controls { width: min(94vw, 480px); }
+  #poster { width: min(94vw, 62vh); }
+}

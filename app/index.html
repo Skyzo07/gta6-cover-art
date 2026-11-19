@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Nights — GTA-style Cover Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h1>Leonida Nights</h1>
+    <p class="tagline">Turn your photo into GTA-style multi-panel cover art. Pick photos, place them, write the caption, export the poster.</p>
+
+    <fieldset class="photos">
+      <legend>Photos — click a panel on the poster to pick it, drag to move the photo</legend>
+      <div class="slot" data-slot="hero">
+        <span class="slot-name">Hero panel</span>
+        <label class="file-btn">Upload photo <input id="photo-hero" type="file" accept="image/*"></label>
+        <button type="button" class="sample-btn" data-sample="hero">Use sample photo</button>
+      </div>
+      <div class="slot" data-slot="mid">
+        <span class="slot-name">Second panel</span>
+        <label class="file-btn">Upload photo <input id="photo-mid" type="file" accept="image/*"></label>
+        <button type="button" class="sample-btn" data-sample="mid">Use sample photo</button>
+      </div>
+      <div class="slot" data-slot="side">
+        <span class="slot-name">Third panel</span>
+        <label class="file-btn">Upload photo <input id="photo-side" type="file" accept="image/*"></label>
+        <button type="button" class="sample-btn" data-sample="side">Use sample photo</button>
+      </div>
+      <label class="check"><input id="fill-all" type="checkbox"> Fill every photo panel with the hero photo</label>
+      <label class="slider">Zoom selected panel <span id="zoom-value">100%</span>
+        <input id="zoom" type="range" min="80" max="300" value="100">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Layout</legend>
+      <div class="seg" id="layout-seg">
+        <button type="button" data-layout="hero-left" class="on">Hero left</button>
+        <button type="button" data-layout="hero-centre">Hero centre</button>
+        <button type="button" data-layout="trio">Hero on top</button>
+      </div>
+      <p class="hint">Click a drawn scene panel on the poster to swap it for another scene.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Colour grade</legend>
+      <div class="seg" id="grade-seg">
+        <button type="button" data-grade="sunset" class="on">Vice sunset</button>
+        <button type="button" data-grade="neon">Neon night</button>
+        <button type="button" data-grade="pastel">Pastel day</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Words</legend>
+      <label>Caption <input id="caption" type="text" maxlength="28" value="SUNSET HEIST"></label>
+      <label>Small line <input id="subtitle" type="text" maxlength="40" value="LEONIDA NIGHTS"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Post size</legend>
+      <div class="seg" id="size-seg">
+        <button type="button" data-size="square">Square 1080×1080</button>
+        <button type="button" data-size="portrait" class="on">Portrait 1080×1350</button>
+        <button type="button" data-size="wide">Wide 1920×1080</button>
+      </div>
+    </fieldset>
+
+    <button id="export" type="button" class="export-btn">Export PNG</button>
+    <p id="status" role="status">No photo yet — try a sample photo to see the poster.</p>
+  </section>
+
+  <section class="stage" aria-label="Poster preview">
+    <canvas id="poster" width="1080" height="1350" aria-label="The cover poster"></canvas>
+    <p class="stage-hint">Selected panel: <strong id="selected-name">Hero panel</strong> — drag the photo, scroll to zoom.</p>
+  </section>
+</main>
+<footer class="fineprint">100% original art drawn by this app — no Rockstar logos, artwork or fonts. Your photos never leave your machine.</footer>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
